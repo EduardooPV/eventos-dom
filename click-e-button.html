@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>&#x1F525; Eventos DOM &#x1F525;</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        div#area{
+            font: normal 30pt Arial;
+            background: green;
+            color: white;
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+        div#emoji{
+            left: 170px;
+            position:absolute;
+            font: normal 60pt Arial;
+        }
+        h1#satisfacao{
+            position: absolute;
+            padding-top: 80px;
+            padding-left: 115px;
+        }
+
+        input#buttonsim{
+            font: normal 40px Arial;
+            width: 200px;
+            height: 70px;
+            line-height: 70px;
+            position:absolute;
+	        top:500px;
+	        left:8px;
+            text-shadow: 1px 1px 1px rgb(0, 0, 0);
+            border-radius: 10px;
+            background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+        }
+        input#buttonnao{
+            font: normal 40px Arial;
+            width: 200px;
+            height: 70px;
+            line-height: 70px;
+            position:absolute;
+	        top:500px;
+	        left:210px;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+        } 
+    </style>
+</head>
+<body>
+    <h1>Testando a interação</h1>
+    <hr>
+    <p><strong>&star;</strong> Mova livremente o mouse sobre o botão: <strong>&darr;</strong></p>
+    <div id='area'>
+        Interaja...
+    </div>
+    <div id='emoji'>
+        &#x1F525
+    </div>
+    <h1 id = 'satisfacao'>Você gostou?</h1>
+    <input id = 'buttonsim' type="button" value="SIM">
+    <input id = 'buttonnao' type="button" value="NÃO">
+    <script>
+        let area = document.getElementById('area')
+        let emoji = document.getElementById('emoji')
+        const buttons = document.querySelector('input#buttonsim')
+        const buttonn = document.querySelector('input#buttonnao')
+        buttonn.addEventListener('click', updateButtonn)
+        buttons.addEventListener('click', updateButton)
+        area.addEventListener('contextmenu', clickdireito)
+        area.addEventListener('dblclick', dclicar)
+        area.addEventListener('click', clicar)
+        area.addEventListener('mouseover', entrar)
+        area.addEventListener('mouseout', sair)
+
+        function clicar(){
+            area.innerHTML = 'MOUSE clicou!'
+            area.style.background = 'red'
+            emoji.innerHTML = '♥️'
+        }
+        function entrar(){
+            area.innerHTML = 'MOUSE entrou!'
+            area.style.background = 'black'
+            emoji.innerHTML = '&#x1F5A4'
+        }
+        function sair(){
+            area.innerHTML = 'MOUSE saiu!'
+            area.style.background = 'blue'
+            emoji.innerHTML = '&#x1F499'
+        }
+        function dclicar(){
+            area.innerHTML = 'Dois clicks!'
+            area.style.background = 'purple'
+            emoji.innerHTML = '&#x1F49C'
+        }
+        function clickdireito(){
+            area.innerHTML = 'Click direito!'
+            area.style.background = 'brown'
+            emoji.innerHTML = '&#x1F90E'
+        }
+
+        buttons.addEventListener('click', updateButton());
+
+        function updateButton() {
+        if (buttons.value === 'SIM') {
+            buttons.value = 'Siim';
+        } else {
+            buttons.value = 'Obrigado';
+        }
+        }
+        buttonn.addEventListener('click', updateButtonn());
+        function updateButtonn() {
+        if (buttonn.value === 'NÃO') {
+            buttonn.value = 'Nãão';
+        } else {
+            buttonn.value = 'Que pena';
+        }
+        }
+    </script>
+
+</body>
+</html>
